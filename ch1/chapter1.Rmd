@@ -1,0 +1,19 @@
+---
+title: "The Book of R: Chapter 1"
+author: "golwell"
+date: "July 21, 2017"
+output: html_document
+---
+
+Get working Directory
+```{r}
+getwd()
+```
+Set working directory
+```{r}
+setwd("~/Documents/the_book_of_r/ch1/")
+```
+Import MASS library
+```{r}
+library(MASS)
+```

@@ -1,4 +1,4 @@
-Select Notes and exercises from:
+Select notes and exercises from:
 The Book of R by Tilman M. Davies
 https://www.nostarch.com/bookofr
 
