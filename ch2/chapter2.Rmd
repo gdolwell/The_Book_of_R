@@ -16,7 +16,7 @@ log(1)
 ```
 ***
 ###Vectors
-vectors are not pointers
+vectors do not point to variables, the copy the value.
 ```{r}
 v1<-3
 v2<-c(v1, v1)
@@ -48,6 +48,26 @@ ex1[-(1:9)]
 ex1[c(1, 3, 5)]
 ex1<-c(0, 1 ,ex1)
 ex1
+```
+a sequence side effect?
+```{r}
+seq(-1:3)
+```
+
+***
+###Vector Usage
+Sequence manipulation is done item by item:
+```{r}
+ex1-(0:(length(ex1)-1))
+```
+Shorter vectors are recycled:
+```{r}
+ex1+ex1[1:4]
+```
+Operations on vectors:
+```{r}
+sum(ex1)
+prod(ex1[2:6])
 ```
 ***
 ##Exercises
@@ -130,4 +150,71 @@ s3<-c(seq(6:12), rep(5.3, times=3), -3, seq(from=102, to=length(s2), length.out=
 ```{r echo=FALSE}
 s3
 length(s3)
+```
+***
+##Exercise 2.4
+
+a.
+```{r}
+s4 <- c(seq(from=3, to=6, length.out=5), rep(c(2, -5.1, -33), times=2), (7/42+2))
+```
+b.
+```{r}
+s5 <- c(s4[1], s4[length(s4)])
+```
+c.
+```{r}
+s6 <- s4[2:(length(s4)-1)]
+```
+d.
+```{r}
+s7 <- c(s5[1], s6, s5[2])
+```
+e.
+```{r}
+s4 <- sort(s4, decreasing = FALSE)
+```
+f.
+```{r}
+sort(s4, decreasing = TRUE) == s4[length(s4):1]
+```
+g.
+```{r}
+s8 <- c(rep(s6[3], times = 3), rep(s6[6], times = 4), s6[length(s6)])
+```
+h.
+```{r}
+s9 <- s4
+s9[c(1, 5:7, length(s9))] <- c(99:95)
+```
+```{r}
+s4
+s5
+s6
+s7
+s8
+s9
+```
+***
+##Exercise 2.5
+a.
+```{r}
+rep(c(2, 0.5, 1), times=3) - rep(c(1, -0.5, 0), times=3)
+```
+b. *32 was added as a check
+```{r}
+f<-c(32, 45, 77, 20, 19, 101, 120, 212)
+5/9*(f-32)
+```
+c.
+```{r}
+rep(c(1, 2), each=3)*c(2,4,6)
+```
+d.
+```{r}
+s10 <- rep(c(1, 2), each=3)*c(2,4,6)
+s10[2:5]<-c(-0.1,-100)
+```
+```{r echo=FALSE}
+s10
 ```
