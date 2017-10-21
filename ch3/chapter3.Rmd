@@ -10,55 +10,114 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-##Notes
-###Creating Matrices
-
+##Exercises
+###3.1
+A.
 ```{r}
-m1 <- matrix(data = c(-3, 2, 893, 0.17), nrow=2, ncol=2)
-m1
+a <- matrix(data = c(4.3, 3.1, 8.2, 8.2, 3.2, 0.9, 1.6, 6.5), nrow = 4, ncol = 2, byrow = T)
 ```
-  
-Matrices can be specified to fill by row:
+```{r, echo=FALSE}
+a
+```
+***
+B.
 ```{r}
-m1 <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3, byrow=FALSE)
-m1
-```  
-As opposed to fill by column:
+dim(a[1:3,])
+```
+***
+C.
 ```{r}
-m1 <- matrix(data = c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3, byrow=TRUE)
-m1
-```  
-Creates new martix by treating vectors as rows:
+a[,2] <- sort(a[,2])
+```
+```{r, echo=FALSE}
+a
+```
+***
+D.
 ```{r}
-rm1 <- rbind(1:3, 4:6)
-rm1
-```  
-Or by treating vectors as columns:
+d <- matrix(data = a[-4, -1])
+```
+```{r, echo=FALSE}
+d
+```
+***
+E.
 ```{r}
-cm1 <- cbind(1:3, 4:6)
-cm1
-```  
-Returns ther dimensions fo your matrices:
+e <- a[3:4,]
+```
+```{r, echo=FALSE}
+e
+```
+***
 ```{r}
-dim(rm1)
-dim(cm1)
-nrow(rm1)
-ncol(cm1)
-```  
-Accessing specific cells within a matrix using subsetting (indexing starts at 1):
-```{r}
-m1[2, 2]
-rm1[2, 2]
-cm1[3, 2]
-```  
-Access an entire row or column:
-```{r}
-m1[1,]
-m1[,1]
-```  
-Or as many rows / columns as desired:
-```{r}
-m1[ ,2:3]
-m1[-1,]
-```  
+a[c(4, 1), c(2, 1)] <- (-1/2 * diag(e))
+```
+```{r, echo=FALSE}
+a
+```
+***
+###3.2
+####Notes
+Transpose t(A)
+Matrix multiplication %*%
+Matrix Inversion solve(A)
 
+A.
+```{r}
+2/7 * (matrix(data = c(1, 2, 7, 2, 4, 6), nrow = 3) - matrix(data = c( 10,30,50,20,40,60), nrow = 3))
+```
+***
+B.
+```{r}
+A <- matrix(c(1, 2, 7))
+B <- matrix(c(3, 4, 8))
+# i
+#A%*%B not combatible
+#ii
+t(A)%*%B
+#iii
+t(B)%*%(A%*%t(A))
+#iv
+(A%*%t(A))%*%B
+#v
+solve((B%*%t(B)+(A%*%t(A) - 100*diag(3))))
+```
+***
+3.3
+A.
+```{r}
+a <- array(data = seq(from = 4.8, to = 0.1, by = -0.1), dim=c(4, 2, 6))
+```
+```{r, echo=FALSE}
+a
+```
+***
+B.
+```{r}
+b <- array(data= (a[c(4, 1), 2, 1:6]), dim=c(2, 1, 6))
+```
+```{r, echo=FALSE}
+b
+```
+***
+C.
+```{r}
+#instruction in part B are to ambiguous to proceed.
+```
+***
+D.
+```{r}
+d <- a[,,-6]
+```
+```{r, echo=FALSE}
+d
+```
+***
+E.
+```{r}
+e <- d
+e[c(2,4), 2, c(1, 3, 5)] <- -99
+```
+```{r, echo=FALSE}
+e
+```

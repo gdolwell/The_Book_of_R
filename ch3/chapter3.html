@@ -124,66 +124,265 @@ $(document).ready(function () {
 </div>
 
 
-<div id="notes" class="section level2">
-<h2>Notes</h2>
-<div id="creating-matrices" class="section level3">
-<h3>Creating Matrices</h3>
-<pre class="r"><code>m1 &lt;- matrix(data = c(-3, 2, 893, 0.17), nrow=2, ncol=2)
-m1</code></pre>
-<pre><code>##      [,1]   [,2]
-## [1,]   -3 893.00
-## [2,]    2   0.17</code></pre>
-<p>Matrices can be specified to fill by row:</p>
-<pre class="r"><code>m1 &lt;- matrix(data = c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3, byrow=FALSE)
-m1</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    3    5
-## [2,]    2    4    6</code></pre>
-<p>As opposed to fill by column:</p>
-<pre class="r"><code>m1 &lt;- matrix(data = c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3, byrow=TRUE)
-m1</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    2    3
-## [2,]    4    5    6</code></pre>
-<p>Creates new martix by treating vectors as rows:</p>
-<pre class="r"><code>rm1 &lt;- rbind(1:3, 4:6)
-rm1</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    2    3
-## [2,]    4    5    6</code></pre>
-<p>Or by treating vectors as columns:</p>
-<pre class="r"><code>cm1 &lt;- cbind(1:3, 4:6)
-cm1</code></pre>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<div id="section" class="section level3">
+<h3>3.1</h3>
+<p>A.</p>
+<pre class="r"><code>a &lt;- matrix(data = c(4.3, 3.1, 8.2, 8.2, 3.2, 0.9, 1.6, 6.5), nrow = 4, ncol = 2, byrow = T)</code></pre>
 <pre><code>##      [,1] [,2]
-## [1,]    1    4
-## [2,]    2    5
-## [3,]    3    6</code></pre>
-<p>Returns ther dimensions fo your matrices:</p>
-<pre class="r"><code>dim(rm1)</code></pre>
-<pre><code>## [1] 2 3</code></pre>
-<pre class="r"><code>dim(cm1)</code></pre>
+## [1,]  4.3  3.1
+## [2,]  8.2  8.2
+## [3,]  3.2  0.9
+## [4,]  1.6  6.5</code></pre>
+<hr />
+<p>B.</p>
+<pre class="r"><code>dim(a[1:3,])</code></pre>
 <pre><code>## [1] 3 2</code></pre>
-<pre class="r"><code>nrow(rm1)</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>ncol(cm1)</code></pre>
-<pre><code>## [1] 2</code></pre>
-<p>Accessing specific cells within a matrix using subsetting (indexing starts at 1):</p>
-<pre class="r"><code>m1[2, 2]</code></pre>
-<pre><code>## [1] 5</code></pre>
-<pre class="r"><code>rm1[2, 2]</code></pre>
-<pre><code>## [1] 5</code></pre>
-<pre class="r"><code>cm1[3, 2]</code></pre>
-<pre><code>## [1] 6</code></pre>
-<p>Access an entire row or column:</p>
-<pre class="r"><code>m1[1,]</code></pre>
-<pre><code>## [1] 1 2 3</code></pre>
-<pre class="r"><code>m1[,1]</code></pre>
-<pre><code>## [1] 1 4</code></pre>
-<p>Or as many rows / columns as desired:</p>
-<pre class="r"><code>m1[ ,2:3]</code></pre>
+<hr />
+<p>C.</p>
+<pre class="r"><code>a[,2] &lt;- sort(a[,2])</code></pre>
 <pre><code>##      [,1] [,2]
-## [1,]    2    3
-## [2,]    5    6</code></pre>
+## [1,]  4.3  0.9
+## [2,]  8.2  3.1
+## [3,]  3.2  6.5
+## [4,]  1.6  8.2</code></pre>
+<hr />
+<p>D.</p>
+<pre class="r"><code>d &lt;- matrix(data = a[-4, -1])</code></pre>
+<pre><code>##      [,1]
+## [1,]  0.9
+## [2,]  3.1
+## [3,]  6.5</code></pre>
+<hr />
+<p>E.</p>
+<pre class="r"><code>e &lt;- a[3:4,]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]  3.2  6.5
+## [2,]  1.6  8.2</code></pre>
+<hr />
+<pre class="r"><code>a[c(4, 1), c(2, 1)] &lt;- (-1/2 * diag(e))</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,] -4.1 -4.1
+## [2,]  8.2  3.1
+## [3,]  3.2  6.5
+## [4,] -1.6 -1.6</code></pre>
+<hr />
+</div>
+<div id="section-1" class="section level3">
+<h3>3.2</h3>
+<div id="notes" class="section level4">
+<h4>Notes</h4>
+<p>Transpose t(A) Matrix multiplication %*% Matrix Inversion solve(A)</p>
+<p>A.</p>
+<pre class="r"><code>2/7 * (matrix(data = c(1, 2, 7, 2, 4, 6), nrow = 3) - matrix(data = c( 10,30,50,20,40,60), nrow = 3))</code></pre>
+<pre><code>##            [,1]       [,2]
+## [1,]  -2.571429  -5.142857
+## [2,]  -8.000000 -10.285714
+## [3,] -12.285714 -15.428571</code></pre>
+<hr />
+<p>B.</p>
+<pre class="r"><code>A &lt;- matrix(c(1, 2, 7))
+B &lt;- matrix(c(3, 4, 8))
+# i
+#A%*%B not combatible
+#ii
+t(A)%*%B</code></pre>
+<pre><code>##      [,1]
+## [1,]   67</code></pre>
+<pre class="r"><code>#iii
+t(B)%*%(A%*%t(A))</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   67  134  469</code></pre>
+<pre class="r"><code>#iv
+(A%*%t(A))%*%B</code></pre>
+<pre><code>##      [,1]
+## [1,]   67
+## [2,]  134
+## [3,]  469</code></pre>
+<pre class="r"><code>#v
+solve((B%*%t(B)+(A%*%t(A) - 100*diag(3))))</code></pre>
+<pre><code>##              [,1]         [,2]        [,3]
+## [1,] -0.007923676  0.003123274 0.007843334
+## [2,]  0.003123274 -0.005350239 0.011483806
+## [3,]  0.007843334  0.011483806 0.017584735</code></pre>
+<hr />
+<p>3.3 A.</p>
+<pre class="r"><code>a &lt;- array(data = seq(from = 4.8, to = 0.1, by = -0.1), dim=c(4, 2, 6))</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]  4.8  4.4
+## [2,]  4.7  4.3
+## [3,]  4.6  4.2
+## [4,]  4.5  4.1
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]  4.0  3.6
+## [2,]  3.9  3.5
+## [3,]  3.8  3.4
+## [4,]  3.7  3.3
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]  3.2  2.8
+## [2,]  3.1  2.7
+## [3,]  3.0  2.6
+## [4,]  2.9  2.5
+## 
+## , , 4
+## 
+##      [,1] [,2]
+## [1,]  2.4  2.0
+## [2,]  2.3  1.9
+## [3,]  2.2  1.8
+## [4,]  2.1  1.7
+## 
+## , , 5
+## 
+##      [,1] [,2]
+## [1,]  1.6  1.2
+## [2,]  1.5  1.1
+## [3,]  1.4  1.0
+## [4,]  1.3  0.9
+## 
+## , , 6
+## 
+##      [,1] [,2]
+## [1,]  0.8  0.4
+## [2,]  0.7  0.3
+## [3,]  0.6  0.2
+## [4,]  0.5  0.1</code></pre>
+<hr />
+<p>B.</p>
+<pre class="r"><code>b &lt;- array(data= (a[c(4, 1), 2, 1:6]), dim=c(2, 1, 6))</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1]
+## [1,]  4.1
+## [2,]  4.4
+## 
+## , , 2
+## 
+##      [,1]
+## [1,]  3.3
+## [2,]  3.6
+## 
+## , , 3
+## 
+##      [,1]
+## [1,]  2.5
+## [2,]  2.8
+## 
+## , , 4
+## 
+##      [,1]
+## [1,]  1.7
+## [2,]  2.0
+## 
+## , , 5
+## 
+##      [,1]
+## [1,]  0.9
+## [2,]  1.2
+## 
+## , , 6
+## 
+##      [,1]
+## [1,]  0.1
+## [2,]  0.4</code></pre>
+<hr />
+<p>C.</p>
+<pre class="r"><code>#instruction in part B are to ambiguous to proceed.</code></pre>
+<hr />
+<p>D.</p>
+<pre class="r"><code>d &lt;- a[,,-6]</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]  4.8  4.4
+## [2,]  4.7  4.3
+## [3,]  4.6  4.2
+## [4,]  4.5  4.1
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]  4.0  3.6
+## [2,]  3.9  3.5
+## [3,]  3.8  3.4
+## [4,]  3.7  3.3
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]  3.2  2.8
+## [2,]  3.1  2.7
+## [3,]  3.0  2.6
+## [4,]  2.9  2.5
+## 
+## , , 4
+## 
+##      [,1] [,2]
+## [1,]  2.4  2.0
+## [2,]  2.3  1.9
+## [3,]  2.2  1.8
+## [4,]  2.1  1.7
+## 
+## , , 5
+## 
+##      [,1] [,2]
+## [1,]  1.6  1.2
+## [2,]  1.5  1.1
+## [3,]  1.4  1.0
+## [4,]  1.3  0.9</code></pre>
+<hr />
+<p>E.</p>
+<pre class="r"><code>e &lt;- d
+e[c(2,4), 2, c(1, 3, 5)] &lt;- -99</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1]  [,2]
+## [1,]  4.8   4.4
+## [2,]  4.7 -99.0
+## [3,]  4.6   4.2
+## [4,]  4.5 -99.0
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]  4.0  3.6
+## [2,]  3.9  3.5
+## [3,]  3.8  3.4
+## [4,]  3.7  3.3
+## 
+## , , 3
+## 
+##      [,1]  [,2]
+## [1,]  3.2   2.8
+## [2,]  3.1 -99.0
+## [3,]  3.0   2.6
+## [4,]  2.9 -99.0
+## 
+## , , 4
+## 
+##      [,1] [,2]
+## [1,]  2.4  2.0
+## [2,]  2.3  1.9
+## [3,]  2.2  1.8
+## [4,]  2.1  1.7
+## 
+## , , 5
+## 
+##      [,1]  [,2]
+## [1,]  1.6   1.2
+## [2,]  1.5 -99.0
+## [3,]  1.4   1.0
+## [4,]  1.3 -99.0</code></pre>
+</div>
 </div>
 </div>
 
