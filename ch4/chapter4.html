@@ -265,6 +265,88 @@ baz &gt;= 14 &amp; baz != 15</code></pre>
 <pre class="r"><code>(baz/foo) &gt; 4 || (baz/foo) &lt;= 2</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 </div>
+<div id="section-2" class="section level3">
+<h3>4.3</h3>
+<p>A.</p>
+<pre class="r"><code>foo &lt;- c(7, 5, 6, 1, 2, 10, 8, 3, 8, 2)
+#i
+bar &lt;- which(foo &gt;= 5)
+#ii
+foo[-which(foo &gt;= 5)]</code></pre>
+<pre><code>## [1] 1 2 3 2</code></pre>
+<hr />
+<p>B.</p>
+<pre class="r"><code>baz = matrix(data = bar, nrow = 2, ncol = 3, byrow = T)
+#i
+baz[which(baz==8)]&lt;- baz[1, 2]^2
+#ii
+all(baz &gt; 4 &amp; baz &lt;= 25)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<hr />
+<p>C.</p>
+<pre class="r"><code>qux = c(10, 5 ,1, 4, 7, 4, 3, 3, 1, 3, 4, 3, 1, 7, 8, 3, 7, 3)
+qux &lt;- array(data = qux, dim = c(3, 2, 3))
+#i
+which((qux == 4 | qux == 3), arr.ind = T)</code></pre>
+<pre><code>##       dim1 dim2 dim3
+##  [1,]    1    2    1
+##  [2,]    3    2    1
+##  [3,]    1    1    2
+##  [4,]    2    1    2
+##  [5,]    1    2    2
+##  [6,]    2    2    2
+##  [7,]    3    2    2
+##  [8,]    1    2    3
+##  [9,]    3    2    3</code></pre>
+<pre class="r"><code>##ii
+qux[which(qux&lt;3 | qux &gt;= 7)] &lt;- 100</code></pre>
+<hr />
+<p>D.</p>
+<pre class="r"><code>foo[c(F, T)]</code></pre>
+<pre><code>## [1]  5  1 10  3  2</code></pre>
+<pre class="r"><code>foo[c(0, 1)]</code></pre>
+<pre><code>## [1] 7</code></pre>
+<hr />
+</div>
+<div id="section-3" class="section level3">
+<h3>4.4</h3>
+<p>A.</p>
+<pre class="r"><code>m &lt;- '&quot;The quick brown fox\n\tjumped over\n\t\tthe lazy dogs.&quot;'
+cat(m)</code></pre>
+<pre><code>## &quot;The quick brown fox
+##  jumped over
+##      the lazy dogs.&quot;</code></pre>
+<hr />
+<p>B.</p>
+<pre class="r"><code>num1 &lt;- 4
+num2 &lt;- 0.75
+cat(&quot;The result of multiplying&quot;, num1, &quot;by&quot;, num2, &quot;is&quot;, num1*num2, &quot;.&quot;)</code></pre>
+<pre><code>## The result of multiplying 4 by 0.75 is 3 .</code></pre>
+<p>***c.</p>
+<pre class="r"><code>location &lt;- &quot;/Users/tdavies/Documects/Rbook&quot;
+sub(&quot;tdavies&quot;, &quot;golwell&quot;, location)</code></pre>
+<pre><code>## [1] &quot;/Users/golwell/Documects/Rbook&quot;</code></pre>
+<hr />
+<ol start="4" style="list-style-type: upper-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>bar &lt;- &quot;How much wood could a woodchuck chuck&quot;
+barz &lt;- &quot;if a woodchuck could chuck wood.&quot;
+#i
+bar &lt;- paste(bar, barz)
+#ii
+bar &lt;- gsub(pattern = &quot;wood&quot;, replace = &quot;metal&quot;, bar)</code></pre>
+<pre><code>## [1] &quot;How much metal could a metalchuck chuck if a metalchuck could chuck metal.&quot;</code></pre>
+<hr />
+<p>E.</p>
+<pre class="r"><code>s &lt;- &quot;Two 6-packs for $12.99&quot;
+#i
+substr(s, start=5, stop =10) == &quot;6-pack&quot;</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>#ii
+s &lt;- sub(pattern = &quot;12.99&quot;, replace=&quot;10.99&quot;, s)</code></pre>
+<pre><code>## [1] &quot;Two 6-packs for $10.99&quot;</code></pre>
+</div>
 </div>
 
 

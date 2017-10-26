@@ -81,3 +81,81 @@ bar <= 6 && bar != 4
 baz >= 14 && baz != 15
 (baz/foo) > 4 || (baz/foo) <= 2
 ```
+###4.3
+A.
+```{r}
+foo <- c(7, 5, 6, 1, 2, 10, 8, 3, 8, 2)
+#i
+bar <- which(foo >= 5)
+#ii
+foo[-which(foo >= 5)]
+```
+***
+B.
+```{r}
+baz = matrix(data = bar, nrow = 2, ncol = 3, byrow = T)
+#i
+baz[which(baz==8)]<- baz[1, 2]^2
+#ii
+all(baz > 4 & baz <= 25)
+```
+***
+C.
+```{r}
+qux = c(10, 5 ,1, 4, 7, 4, 3, 3, 1, 3, 4, 3, 1, 7, 8, 3, 7, 3)
+qux <- array(data = qux, dim = c(3, 2, 3))
+#i
+which((qux == 4 | qux == 3), arr.ind = T)
+##ii
+qux[which(qux<3 | qux >= 7)] <- 100
+```
+***
+D.
+```{r}
+foo[c(F, T)]
+foo[c(0, 1)]
+```
+***
+###4.4
+A.
+```{r}
+m <- '"The quick brown fox\n\tjumped over\n\t\tthe lazy dogs."'
+cat(m)
+```
+***
+B.
+```{r}
+num1 <- 4
+num2 <- 0.75
+cat("The result of multiplying", num1, "by", num2, "is", num1*num2, ".")
+```
+***c.
+```{r}
+location <- "/Users/tdavies/Documects/Rbook"
+sub("tdavies", "golwell", location)
+```
+***
+D. 
+```{r}
+bar <- "How much wood could a woodchuck chuck"
+barz <- "if a woodchuck could chuck wood."
+#i
+bar <- paste(bar, barz)
+#ii
+bar <- gsub(pattern = "wood", replace = "metal", bar)
+```
+```{r, echo=FALSE}
+bar
+```
+***
+E.
+```{r}
+s <- "Two 6-packs for $12.99"
+#i
+substr(s, start=5, stop =10) == "6-pack"
+#ii
+s <- sub(pattern = "12.99", replace="10.99", s)
+```
+```{r, echo=FALSE}
+s
+```
