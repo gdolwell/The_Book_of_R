@@ -1,0 +1,25 @@
+---
+title: "Chapter3"
+author: "gdolwell"
+date: "Oct 26, 2017"
+output: html_document
+---
+
+##Chapter5
+Lists and Data Frames
+***
+##5.1
+A.
+```{r}
+mylist <- list(seq(-4, 4, length = 20), matrix(c(F, T, T, T, F, T, T, F, F), nrow= 3, ncol=3, byrow = F), c("don", "quixote"), factor(c("LOW", "MED", "LOW", "MED", "MED", "MED", "HIGH")))
+#i
+mylist[[2]][c(2, 1), c(2, 3)]
+#ii
+mylist[[3]] <- sub("don", "Don", mylist[[3]])
+mylist[[3]] <- sub("quixote", "Quixote", mylist[[3]])
+cat(c('"Windmills! ATTACK!"\n\t', '-\\', mylist[[3]][1], mylist[[3]][2], '/-'))
+#iii
+mylist[[1]][mylist[[1]]>=1]
+#iv
+which(mylist[[4]]=='MED')
+```
